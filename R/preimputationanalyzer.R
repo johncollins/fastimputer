@@ -57,7 +57,7 @@ categorical.error <- function(df1, df2) {
 
 #' continuous.error
 #' 
-#' I measure the mean squared error of imputing the ontinuous variables
+#' I measure the mean squared error of imputing the continuous variables
 continuous.error <- function(df1, df2) {
   sum((df1 - df2) ^ 2) / (nrow(df1) * ncol(df1))
 }

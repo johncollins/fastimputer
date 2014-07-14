@@ -1,4 +1,4 @@
 fastimputer
 ===========
 
-A really fast imputation library
+A really fast imputation and analysis package for R
