@@ -1,0 +1,14 @@
+Package: fastimputer
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2014-07-13
+Author: john collins
+Depends:
+    R (>= 3.1.0)
+Imports:
+    nnet (>= 7.3.8)
+Maintainer: john collins <johnssocks@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: MIT
+LazyData: true
