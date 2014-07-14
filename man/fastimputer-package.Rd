@@ -23,11 +23,8 @@ todo
 john collins
 Maintainer: john collins <johnssocks@gmail.com>
 }
-\references{
-none}
-impute, imputation
-documentation directory
-\keyword{ package }
+\references{refs}
+\keyword{ package, impute, imputation}
 \seealso{
 
 }

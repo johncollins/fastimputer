@@ -1,5 +1,3 @@
-require(nnet) # for multnomial logistic regression function multinom
-
 #' simple.imputer function
 #'
 #' I use really simple models to predict missing values.
@@ -13,7 +11,7 @@ require(nnet) # for multnomial logistic regression function multinom
 #' df.imputed <- simple.imputer(df)
 
 simple.imputer <- function(df) {
-  library(nnet)
+  require(nnet)
   # break into imputable and non-inputable names
   df.names <- names(df)
   imputable.names <- df.names[apply(df, 2, function(x)any(which(is.na(x))))]
@@ -23,11 +21,13 @@ simple.imputer <- function(df) {
     train.ids <- which(!is.na(df[name]))
     test.ids <- which(is.na(df[name]))
     formula <- paste(name, '~', paste(imputor.names, collapse=' + '))
-    if (is.factor(df[[name]])) {
-      fit <- multinom(eval(formula), data=df, na.rm=T)
-    } else {
-      fit <- lm(eval(formula), data=df, na.rm=T)
-    }
+    fit.msg <- capture.output(suppressMessages(
+      if (is.factor(df[[name]])) {
+        fit <- multinom(eval(formula), data=df)
+      } else {
+        fit <- lm(eval(formula), data=df)
+      }
+    ))
     df[test.ids, name] <- predict(fit, subset(df, subset = 1:nrow(df) %in% test.ids, select = names(df) %in% imputor.names))
   }
   df
