@@ -6,12 +6,12 @@
 #' @param df Data frame for all data including missing and non-missing values
 #' @keywords impute, imputation, imputer
 #' @export
+#' @importFrom nnet multinom
 #' @examples
 #' df <- data.frame(A=c(1,2,3,1,2), B=as.factor(c(1,2,1,3,NA)), C=c(1.1, 3.5, NA, 3, NA))
 #' df.imputed <- simple.imputer(df)
 
 simple.imputer <- function(df) {
-  require(nnet)
   # break into imputable and non-inputable names
   df.names <- names(df)
   imputable.names <- df.names[apply(df, 2, function(x)any(which(is.na(x))))]

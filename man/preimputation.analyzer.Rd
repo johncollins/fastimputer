@@ -16,8 +16,13 @@ extrapolating. Further, I give advice about what
 kinds of missingness are observed within the data.
 }
 \examples{
-df <- data.frame(A=c(1,2,3,1,2), B=as.factor(c(1,2,1,3,NA)), C=c(1.1, 3.5, NA, 3, NA))
-preimputation.analysis <- preimputation.analyzer(df)
+df1 <- data.frame(A=c(1,2,3,1,2,3,1,2,3,1,2,3,1,2,3), B=as.factor(c(1,2,1,3,NA,2,1,2,3,NA,1,3,1,2,NA)), C=c(1.1, 3.5, NA, 3, NA, NA, 4.1, 2.2, 2.3, 1.4, 1, 2, 5, 3, 4))
+preimputation.analysis <- preimputation.analyzer(df1)
+df2 <- read.table(
+"http://www.unt.edu/rss/class/Jon/Benchmarks/rrp.ex.data.txt",
+header = TRUE, sep = ",", na.strings = "NA",
+dec = ".", strip.white = TRUE)
+preimputation.analysis <- preimputation.analyzer(df2)
 }
 \keyword{imputation,}
 \keyword{impute,}
