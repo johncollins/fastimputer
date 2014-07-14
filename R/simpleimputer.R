@@ -1,4 +1,4 @@
-#' simple.imputer function
+#' simple.imputer
 #'
 #' I use really simple models to predict missing values.
 #' For continuous variables I use linear regression and 

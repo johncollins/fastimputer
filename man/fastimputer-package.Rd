@@ -24,7 +24,9 @@ john collins
 Maintainer: john collins <johnssocks@gmail.com>
 }
 \references{refs}
-\keyword{ package, impute, imputation}
+\keyword{package,}
+\keyword{impute,}
+\keyword{imputation,}
 \seealso{
 
 }
