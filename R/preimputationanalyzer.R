@@ -23,17 +23,17 @@ preimputation.analyzer <- function(df) {
   df.small <- df[sample(1:nrows, min(nrows, 5000)), ]
   df.small.full <- df.small[complete.cases(df.small), ]
   # knock out proportionate numbers of items
-  df.names <- names(df)
-  imputable.names <- df.names[apply(df.small, 2, function(x)any(which(is.na(x))))]
+  # and check the error in filling them in
+  imputable.names <- names(df)[apply(df.small, 2, function(x)any(which(is.na(x))))]
   df.small.full.imputable <- df.small.full
   for (name in imputable.names) {
-    n.to.impute <- ceiling(nrow(df.small.full)*na.props[name])
+    n.to.impute <- ceiling(nrow(df.small.full) * na.props[name])
     df.small.full.imputable[sample(1:nrow(df.small.full), n.to.impute), name] <- NA 
   }
   # then impute and measure time and error
   simple.time <- system.time(df.small.full.imputed <- simple.imputer(df.small.full.imputable))[1]
   simple.error <- combined.error(df.small.full, df.small.full.imputed)
-  list(time=list(simple=simple.time*(nrows/nrow(df.small.full))), error=list(simple=simple.error))
+  list(time = list(simple = simple.time * (nrows / nrow(df.small.full))), error=list(simple = simple.error))
 }
 
 #' combined.error
